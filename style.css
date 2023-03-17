@@ -7,7 +7,9 @@
 :root{
   --ff-heading: 'Staatliches';
   --ff-texting: 'Palanquin', sans-serif;
-
+  --ff-texting-desktop: 'Roboto', sans-serif;
+  --ff-footer: 'Open Sans', sans-serif;
+  
   --hue: 230;
   --bg-primary: hsl(var(--hue), 17%, 62%);
   --bg-secondary: hsl(var(--hue), 100%, 97%);
@@ -24,10 +26,14 @@
   --fs-heading-sm: clamp(3rem, 0.5rem + 3vw, 4rem);
 }
 
+body{
+  width: 100%;
+  height: 100%;
+}
 .page{
   max-width: clamp(33rem, 30rem + 60vw, 117rem);
+  
 }
-
 
 body p{
   font-family: var(--ff-texting);
@@ -67,28 +73,41 @@ header svg{
 }
 
 main{
-  display: grid;
-  gap: 3.5rem;
-  background: var(--bg-secondary);
+  background: var(--bg-secondary);  
   padding: 0 3.2rem 6rem 3.2rem;
+}
+
+main p{
+  margin-bottom: 6.3rem;
+}
+
+.cards{
+  display: grid;
+  gap: 3.2rem;
 }
 
 .card{
   font-family: var(--ff-heading);
   color: var(--fc-seconrady-img);
 
-  position: relative;
-
   opacity: 0.9;
   filter: brightness(0.5);
 }
 
-
-
 .card img{
   width: 100%;
-
+  height: auto;
+  transition: all 500ms ease;
   animation: downtop 700ms backwards;
+}
+
+.card:nth-child(5){
+  display: none;
+}
+
+
+.card:nth-child(6){
+  display: none;
 }
 
 .card h2{
@@ -104,10 +123,8 @@ main{
   background: hsl(312, 91%, 96%);
   border-radius: 2rem;
 
-  display: flex;
-  flex-direction: column;
-
   animation: righttocenter 700ms 350ms backwards;
+  
   
 }
 
@@ -142,4 +159,155 @@ main{
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.intro-desktop{
+  visibility: hidden;
+}
+
+footer{
+  visibility: hidden;
+}
+
+@media (min-width: 700px){
+
+  .page{
+    display: grid;
+    grid-template-columns: 30vw 60vw;
+    grid-template-areas: 
+    "He Ma"
+    "He Fo";
+  }
+
+  main{
+    margin: 6.4rem auto 4.3rem;
+    padding-bottom: 0;
+    background: #FFFFFF;
+    grid-area: Ma;
+  }
+  
+  header{
+    max-width: 37.7rem;
+    height: auto;
+    grid-area: He;
+  }
+
+  header h1{
+    padding: 1rem 0 1rem;
+  }
+
+  .intro-mobile{
+    display: none;
+  }
+
+  .intro-desktop p{
+    visibility: visible;
+    font-family: var(--ff-texting-desktop);
+    color: var(--fc-primary);
+    
+    font-size: 2.4rem;
+    line-height: 2rem;
+    
+    text-align: center;
+
+    margin-top: 5.2rem;
+
+    height: 50vw;
+  }
+
+  footer{
+    visibility: visible;
+    margin: 0 auto;
+    grid-area: "Fo";
+    width: 59.2rem;
+  }
+
+  footer p{
+    font-family: var(--ff-footer);
+    font-size: 1.4rem;
+    color: var(--fc-seconrady-img);
+    line-height: 2.8rem;
+    
+  }
+
+  footer a{
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .cards{
+    display: grid;    
+    grid-template-areas: 
+    "A B"
+    "C B"
+    "C D";
+    
+    gap: 3.2rem;
+  }
+  
+
+  .card:nth-child(1) {
+    grid-area: A;
+  }
+  
+  .card:nth-child(2) {
+    grid-area: B;
+  }
+  
+  .card:nth-child(3) {
+    grid-area: C;
+  }
+  
+  .card:nth-child(4) {
+    grid-area: D;
+  }
+
+}
+
+  @media(min-width: 1000px){
+  
+  main{
+    width: 65vw;
+    position: relative;
+    margin: 6.4rem auto 0;
+    padding-bottom: 0;
+  }
+
+  .cards{
+    grid-template-areas: 
+    "A B E"
+    "C B F"
+    "C D F";
+        
+  }
+
+  .card:nth-child(1) {
+    grid-area: A;
+  }
+  
+  .card:nth-child(2) {
+    grid-area: B;
+  }
+  
+  .card:nth-child(3) {
+    grid-area: C;
+  }
+  
+  .card:nth-child(4) {
+    grid-area: D;
+  }
+  
+  .card:nth-child(5) {
+    display: block;
+    grid-area: E;
+  }
+  
+  .card:nth-child(6) {
+    display: block;
+    grid-area: F;
+  }
+
+  .card h2{
+    right: 0.5rem;
+  }  
 }
